@@ -4,39 +4,36 @@ var temp = document.getElementById("temperature");
 var locData = {};
 
 function getLocation() {
-  $.getJSON("http://ip-api.com/json", function(e) {
-    locData = e;
-    loc.innerHTML =
-      locData.city + ", " + locData.region + ", " + locData.countryCode;
-  });
+    $.getJSON("http://ip-api.com/json", function(e) {
+        locData = e;
+        loc.innerHTML =
+            locData.city + ", " + locData.region + ", " + locData.countryCode;
+    });
 
-  /*if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    loc.innerHTML = "Error";
-  }
-  */
+    /*if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      loc.innerHTML = "Error";
+    }
+    */
 }
 
 function getTemperature() {
-  var tempAPIURL =
-    "http://api.openweathermap.org/data/2.5/weather?APPID=" +
-    aKey +
-    "&zip=" +
-    locData.zip +
-    "," +
-    locData.countryCode +
-    "&units=imperial";
+    var tempAPIURL =
+        "http://api.openweathermap.org/data/2.5/weather?APPID=" +
+        aKey +
+        "&zip=" +
+        locData.zip +
+        "," +
+        locData.countryCode +
+        "&units=imperial";
 
-  console.log(tempAPIURL);
-
-  $.getJSON(tempAPIURL, function(e) {
-    console.log(e);
-    temp.innerHTML = e.main.temp;
-  }).fail(function(e) {
-    temp.innerHTML = "??";
-    getTemperature();
-  });
+    $.getJSON(tempAPIURL, function(e) {
+        temp.innerHTML = e.main.temp;
+    }).fail(function(e) {
+        temp.innerHTML = "??";
+        getTemperature();
+    });
 }
 
 /* Decremented, switching from https to http
@@ -57,13 +54,13 @@ function showPosition(position) {
 */
 
 document.getElementById("location").onclick = function() {
-  getLocation();
-  getTemperature();
+    getLocation();
+    getTemperature();
 };
 
 window.onload = function() {
-  getLocation();
-  getTemperature();
+    getLocation();
+    getTemperature();
 };
 
 /*

@@ -1,15 +1,15 @@
 body {
-  text-align: center
+    text-align: center
 }
 
 #location {
-  font-size: 2em
+    font-size: 2em
 }
 
 #temperature {
-  font-size: 9em
+    font-size: 9em
 }
 
 #temperature-block {
-  margin-top: 150px
+    margin-top: 150px
 }
